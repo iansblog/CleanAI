@@ -36,6 +36,11 @@ class App {
         this.normalizeQuotesCheckbox = document.getElementById('normalizeQuotes');
         this.convertEllipsisCheckbox = document.getElementById('convertEllipsis');
         this.removeTrailingCheckbox = document.getElementById('removeTrailing');
+        this.normalizeMathSymbolsCheckbox = document.getElementById('normalizeMathSymbols');
+        this.fixUnicodePunctuationCheckbox = document.getElementById('fixUnicodePunctuation');
+        this.normalizeSpacingCheckbox = document.getElementById('normalizeSpacing');
+        this.removeAIArtifactsCheckbox = document.getElementById('removeAIArtifacts');
+        this.fixEncodingIssuesCheckbox = document.getElementById('fixEncodingIssues');
 
         // Stats elements
         this.statsSection = document.getElementById('stats');
@@ -80,7 +85,12 @@ class App {
             this.normalizeDashesCheckbox,
             this.normalizeQuotesCheckbox,
             this.convertEllipsisCheckbox,
-            this.removeTrailingCheckbox
+            this.removeTrailingCheckbox,
+            this.normalizeMathSymbolsCheckbox,
+            this.fixUnicodePunctuationCheckbox,
+            this.normalizeSpacingCheckbox,
+            this.removeAIArtifactsCheckbox,
+            this.fixEncodingIssuesCheckbox
         ];
 
         checkboxes.forEach(checkbox => {
@@ -122,7 +132,12 @@ class App {
             normalizeDashes: this.normalizeDashesCheckbox.checked,
             normalizeQuotes: this.normalizeQuotesCheckbox.checked,
             convertEllipsis: this.convertEllipsisCheckbox.checked,
-            removeTrailing: this.removeTrailingCheckbox.checked
+            removeTrailing: this.removeTrailingCheckbox.checked,
+            normalizeMathSymbols: this.normalizeMathSymbolsCheckbox.checked,
+            fixUnicodePunctuation: this.fixUnicodePunctuationCheckbox.checked,
+            normalizeSpacing: this.normalizeSpacingCheckbox.checked,
+            removeAIArtifacts: this.removeAIArtifactsCheckbox.checked,
+            fixEncodingIssues: this.fixEncodingIssuesCheckbox.checked
         };
     }
 
@@ -271,7 +286,12 @@ class App {
             this.normalizeDashesCheckbox,
             this.normalizeQuotesCheckbox,
             this.convertEllipsisCheckbox,
-            this.removeTrailingCheckbox
+            this.removeTrailingCheckbox,
+            this.normalizeMathSymbolsCheckbox,
+            this.fixUnicodePunctuationCheckbox,
+            this.normalizeSpacingCheckbox,
+            this.removeAIArtifactsCheckbox,
+            this.fixEncodingIssuesCheckbox
         ];
 
         checkboxes.forEach(checkbox => {
@@ -293,7 +313,12 @@ class App {
             this.normalizeDashesCheckbox,
             this.normalizeQuotesCheckbox,
             this.convertEllipsisCheckbox,
-            this.removeTrailingCheckbox
+            this.removeTrailingCheckbox,
+            this.normalizeMathSymbolsCheckbox,
+            this.fixUnicodePunctuationCheckbox,
+            this.normalizeSpacingCheckbox,
+            this.removeAIArtifactsCheckbox,
+            this.fixEncodingIssuesCheckbox
         ];
 
         checkboxes.forEach(checkbox => {
