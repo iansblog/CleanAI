@@ -1,0 +1,29 @@
+services:
+  text-cleaner:
+    build: 
+      context: ..
+      dockerfile: DockerConfig/Dockerfile
+    container_name: ai-text-clean
+    ports:
+      - "80:80"
+    restart: unless-stopped
+    environment:
+      - NGINX_HOST=localhost
+      - NGINX_PORT=80
+    volumes:
+      # Optional: Mount logs for debugging
+      - ./logs:/var/log/nginx
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.text-cleaner.rule=Host(`localhost`)"
+      - "traefik.http.services.text-cleaner.loadbalancer.server.port=80"
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+networks:
+  default:
+    name: text-cleaner-network

@@ -10,25 +10,47 @@ A powerful, modern web application for cleaning and normalizing text to ensure b
 - **Normalize Quotes**: Converts curly/smart quotes ("")'' to straight quotes ("'), essential for code compatibility
 - **Convert Ellipsis**: Replaces ellipsis character (…) with three dots (...)
 - **Remove Trailing Whitespace**: Eliminates whitespace at the end of lines
+- **Normalize Math Symbols**: Converts ×÷≤≥≠±∞° to ASCII equivalents
+- **Fix Unicode Punctuation**: Normalizes special punctuation marks
+- **Normalize Spacing**: Fixes various space characters and multiple spaces
+- **Remove AI Artifacts**: Eliminates control chars and copy-paste artifacts
+- **Fix Encoding Issues**: Repairs common UTF-8/Windows-1252 problems
+- **Convert to Markdown**: Formats text with markdown headers, lists, links, and code
 
 ## 🚀 Quick Start
 
+### Option 1: Direct Browser Access
 1. **Clone or Download**: Get the project files to your local machine
 2. **Open**: Navigate to the `src` folder and open `index.html` in your web browser
 3. **Start Cleaning**: Paste your text and watch it get cleaned automatically!
 
+### Option 2: Docker Deployment 🐳
+For production deployment or if you prefer containerized applications:
+
+1. **See Docker Guide**: Check out [`DockerConfig/docker.md`](DockerConfig/docker.md) for complete Docker deployment instructions
+2. **Quick Start**: Navigate to the `DockerConfig` directory and run the appropriate script for your system
+3. **Access**: Open http://localhost:80 in your browser
+
 ## 📁 Project Structure
 
 ```
-text-cleaning-app/
-├── src/
-│   ├── index.html          # Main application page
+CleanAI/
+├── src/                      # Application source files
+│   ├── index.html           # Main application page
 │   ├── css/
-│   │   └── styles.css      # Modern responsive styles
+│   │   └── styles.css       # Modern responsive styles
 │   └── js/
-│       ├── app.js          # Main application controller
-│       ├── textCleaner.js  # Text cleaning logic
-│       └── utils.js        # Utility functions
+│       ├── app.js           # Main application controller
+│       ├── textCleaner.js   # Text cleaning logic
+│       └── utils.js         # Utility functions
+├── DockerConfig/            # Docker deployment files
+│   ├── Dockerfile          # Docker container configuration
+│   ├── docker-compose.yml  # Docker Compose setup
+│   ├── nginx.conf          # Nginx server configuration
+│   ├── run-docker.sh       # Linux/Mac Docker runner script
+│   ├── run-docker.bat      # Windows Docker runner script
+│   ├── .dockerignore       # Docker build exclusions
+│   └── docker.md           # Docker deployment guide
 └── README.md               # This file
 ```
 
@@ -49,6 +71,12 @@ All cleaning options are enabled by default, but you can customize which operati
 - ✅ **Normalize quotes** - Changes smart quotes to straight quotes
 - ✅ **Convert ellipsis** - Replaces … with ...
 - ✅ **Remove trailing whitespace** - Cleans up line endings
+- ✅ **Normalize math symbols** - Converts ×÷≤≥≠±∞° to ASCII equivalents
+- ✅ **Fix Unicode punctuation** - Normalizes special punctuation marks
+- ✅ **Normalize spacing** - Fixes various space characters and multiple spaces
+- ✅ **Remove AI artifacts** - Eliminates control chars and copy-paste artifacts
+- ✅ **Fix encoding issues** - Repairs common UTF-8/Windows-1252 problems
+- ☐ **Convert to markdown** - Formats text with markdown headers, lists, links, and code
 
 ### Keyboard Shortcuts
 - **Ctrl/Cmd + Enter**: Clean text
@@ -73,7 +101,7 @@ All cleaning options are enabled by default, but you can customize which operati
 - **Real-time Processing**: Text is cleaned automatically as you type (with debouncing)
 - **Statistics**: View detailed stats about what was cleaned
 - **Clipboard Integration**: Modern clipboard API with fallbacks
-- **File Download**: Save cleaned text as .txt files
+- **File Download**: Save cleaned text as .txt or .md files
 - **Accessibility**: Keyboard navigation and screen reader support
 - **Mobile Friendly**: Responsive design that works on all devices
 
@@ -132,6 +160,8 @@ Ellipsis character…
 Hidden characters: ‌​‍⁠﻿
 Non-breaking spaces   
 Trailing spaces at line end    
+Math symbols: × ÷ ≤ ≥ ≠ ± ∞ °
+Encoding issues: â€™ â€œ â€
 ```
 
 ## 🤝 Contributing
@@ -159,10 +189,7 @@ This project is open source and available under the [MIT License](LICENSE).
 - [ ] Batch file processing
 - [ ] More cleaning options (smart apostrophes, unicode normalization)
 - [ ] Text comparison view (before/after)
-- [ ] Export to different formats (JSON, CSV)
-- [ ] Cleaning presets/profiles
 - [ ] API integration for bulk processing
-- [ ] Browser extension version
 
 ## 📞 Support
 
@@ -173,10 +200,12 @@ If you encounter any issues or have questions:
 3. Try disabling browser extensions
 4. Test in an incognito/private window
 
+For Docker-related issues, see [`DockerConfig/docker.md`](DockerConfig/docker.md).
+
 ## 🙏 Acknowledgments
 
 - Inspired by various text cleaning tools and developer needs
-- Built with modern web standards and best practices
+- Built with modern web standards and best practices  
 - Designed for accessibility and usability
 
 ---

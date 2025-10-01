@@ -1,0 +1,15 @@
+# Ignore local miscellaneous files
+xxx
+
+# Node/Python/etc common ignores (optional)
+node_modules/
+.env
+.DS_Store
+*.log
+
+# Docker output
+docker-compose.override.yml
+
+# IDE/editor
+.vscode/
+.idea/
