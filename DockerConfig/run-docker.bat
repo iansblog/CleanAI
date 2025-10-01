@@ -26,7 +26,7 @@ REM Run the container
 docker run -d ^
   --name ai-text-clean ^
   --restart unless-stopped ^
-  -p 8080:80 ^
+  -p 80:80 ^
   ai-text-clean:latest
 
 if %ERRORLEVEL% neq 0 (
@@ -36,12 +36,12 @@ if %ERRORLEVEL% neq 0 (
 )
 
 echo ✅ AI Text Clean is now running!
-echo 🌐 Open your browser and go to: http://localhost:8080
+echo 🌐 Open your browser and go to: http://localhost
 echo.
 echo 📋 Useful commands:
 echo   - View logs: docker logs ai-text-clean
 echo   - Stop container: docker stop ai-text-clean
 echo   - Remove container: docker rm ai-text-clean
-echo   - Health check: curl http://localhost:8080/health
+echo   - Health check: curl http://localhost/health
 echo.
 pause

@@ -2,6 +2,20 @@
 
 This guide covers how to deploy the AI Text Clean application using Docker.
 
+## Pull the official image
+
+If you want to use the pre-built public image instead of building locally, pull the official image from Docker Hub:
+
+```bash
+# Pull the official image from Docker Hub
+docker pull neonsunset/aitextclean:latest
+
+# Run the container (maps host port 80 to container port 80)
+docker run -d --name ai-text-clean -p 80:80 neonsunset/aitextclean:latest
+```
+
+Official Hub page: https://hub.docker.com/r/neonsunset/aitextclean
+
 ## 📁 Docker Files Structure
 
 ```
@@ -47,7 +61,7 @@ DockerConfig/
 
 ### Prerequisites
 - Docker installed and running
-- Port 8080 available (or modify the port mapping)
+- Port 80 available (or modify the port mapping)
 
 ### Option 1: Automated Scripts
 
@@ -74,13 +88,13 @@ docker-compose up -d
 ```bash
 cd DockerConfig
 docker build -t ai-text-clean:latest .
-docker run -d --name ai-text-clean -p 8080:80 ai-text-clean:latest
+docker run -d --name ai-text-clean -p 80:80 ai-text-clean:latest
 ```
 
 ## 🌐 Access Points
 
-- **Main Application**: http://localhost:8080
-- **Health Check**: http://localhost:8080/health
+- **Main Application**: http://localhost
+- **Health Check**: http://localhost/health
 
 ## 📋 Management Commands
 
@@ -129,7 +143,7 @@ docker-compose up -d --scale text-cleaner=3
 ### Health Monitoring
 ```bash
 # Check health status
-curl http://localhost:8080/health
+curl http://localhost/health
 
 # Check container health
 docker inspect --format='{{.State.Health.Status}}' ai-text-clean
@@ -155,7 +169,7 @@ To use a different port, modify the port mapping:
 
 ```bash
 # Use port 3000 instead of 8080
-docker run -d --name ai-text-clean -p 3000:80 ai-text-clean:latest
+docker run -d --name ai-text-clean -p 80:80 ai-text-clean:latest
 ```
 
 ### Volume Mounting
@@ -163,10 +177,10 @@ To persist logs or provide custom configuration:
 
 ```bash
 # Mount logs directory
-docker run -d --name ai-text-clean -p 8080:80 -v ./logs:/var/log/nginx ai-text-clean:latest
+docker run -d --name ai-text-clean -p 80:80 -v ./logs:/var/log/nginx ai-text-clean:latest
 
 # Mount custom nginx config
-docker run -d --name ai-text-clean -p 8080:80 -v ./custom-nginx.conf:/etc/nginx/nginx.conf ai-text-clean:latest
+docker run -d --name ai-text-clean -p 80:80 -v ./custom-nginx.conf:/etc/nginx/nginx.conf ai-text-clean:latest
 ```
 
 ## 🔧 Customization
@@ -176,7 +190,7 @@ docker run -d --name ai-text-clean -p 8080:80 -v ./custom-nginx.conf:/etc/nginx/
 2. Modify settings as needed
 3. Mount the custom config when running:
    ```bash
-   docker run -d --name ai-text-clean -p 8080:80 -v ./custom-nginx.conf:/etc/nginx/nginx.conf ai-text-clean:latest
+   docker run -d --name ai-text-clean -p 80:80 -v ./custom-nginx.conf:/etc/nginx/nginx.conf ai-text-clean:latest
    ```
 
 ### SSL/HTTPS Setup
@@ -278,10 +292,10 @@ spec:
 
 **Port Already in Use:**
 ```bash
-# Find what's using port 8080
-netstat -tulpn | grep 8080
+# Find what's using port 80
+netstat -tulpn | grep 80
 # Use a different port
-docker run -d --name ai-text-clean -p 8081:80 ai-text-clean:latest
+docker run -d --name ai-text-clean -p 81:80 ai-text-clean:latest
 ```
 
 **Container Won't Start:**
@@ -359,7 +373,7 @@ docker-compose up -d
 docker stop ai-text-clean
 docker rm ai-text-clean
 docker build -t ai-text-clean:latest .
-docker run -d --name ai-text-clean -p 8080:80 ai-text-clean:latest
+docker run -d --name ai-text-clean -p 80:80 ai-text-clean:latest
 ```
 
 ### Backup and Restore
@@ -379,8 +393,8 @@ docker load < ai-text-clean-image.tar
 If you encounter issues with the Docker deployment:
 
 1. Check the container logs: `docker logs ai-text-clean`
-2. Verify the health endpoint: `curl http://localhost:8080/health`
-3. Check port availability: `netstat -tulpn | grep 8080`
+2. Verify the health endpoint: `curl http://localhost/health`
+3. Check port availability: `netstat -tulpn | grep 80`
 4. Ensure Docker is running: `docker version`
 5. Try rebuilding with no cache: `docker build --no-cache -t ai-text-clean .`
 
